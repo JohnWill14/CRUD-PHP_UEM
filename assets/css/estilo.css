@@ -1,0 +1,11 @@
+.center-block{
+    margin: 0 auto;
+}
+
+.al-right{
+    text-align: right;
+}
+
+#btn-form button{
+    width: 25%;
+}

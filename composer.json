@@ -1,0 +1,15 @@
+{
+    "name": "crud/cliente",
+    "description": "project for the php course at the State University of Maringá. A simple client CRUD",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John William",
+            "email": "johnwill.v.2017@gmail.com"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "^0.13.1"
+    }
+}
