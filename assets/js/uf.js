@@ -5,9 +5,9 @@ fetch(url)
 .then((data)=>data.json())
 .then(function(data) {
     data.forEach((e)=>{
-        options.innerHTML += getOption(e.nome);
+        options.innerHTML += getOption(e.nome, e.sigla);
     });
 });                                
-function getOption(value){
-    return `<option value="${value}">${value}</option>`;
+function getOption(value, sigla){
+    return `<option value="${sigla}">${value}</option>`;
 }

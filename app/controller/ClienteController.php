@@ -21,9 +21,18 @@ function getCliente($valores_post){
     return $cliente;
 }
 
-if(isset($_POST['method'])&&$_POST['method']=='post'){
+if(isset($_GET['method'])&&$_GET['method']=='post'){
     $cliente = getCliente($valores_post);
     $clienteDao->create($cliente);
+    header("Location: ../../");
+}else if(isset($_GET['method'])&&$_GET['method']=='update'){
+    $cliente = getCliente($valores_post);
+    $cliente->setCodigo($valores_post['codigo']);
+    $clienteDao->update($cliente);
+    header("Location: ../../");
+} else if(isset($_GET['method'])&&$_GET['method']=='delete'&&isset($_GET['id'])){
+    $id = $_GET['id'];
+    $clienteDao->delete($id);
     header("Location: ../../");
 }
 

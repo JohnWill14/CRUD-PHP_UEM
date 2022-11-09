@@ -26,7 +26,7 @@ final class TableCliente extends AbstractMigration
               ->addColumn('tp_cliente', 'string', ['limit' => 1, 'null'=>false])
               ->addColumn('nr_documento', 'string', ['limit' => 14, 'null'=>false])
               ->addColumn('ds_cidade', 'string', ['limit' => 50, 'null'=>false])
-              ->addColumn('cd_uf', 'string', ['limit' => 02, 'null'=>false])
+              ->addColumn('cd_uf', 'string', ['limit' => 03, 'null'=>false])
               ->addColumn('dt_cadastro', 'datetime', ['null'=>false, 'default' => 'CURRENT_TIMESTAMP'])
               ->addColumn('nr_telefone', 'string', ['limit' => 15, 'null'=>true])
               ->addColumn('nr_inscricao', 'integer', ['limit' => 10, 'null'=>true])

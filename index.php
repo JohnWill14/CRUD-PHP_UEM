@@ -16,115 +16,73 @@
 </head>
 
 <body>
-    <br />
+    <?php
+    include_once("app/model/Cliente.php");
+    include_once("app/dao/ClienteDao.php");
+    include_once("app/conection/Conection.php");
+
+    $clienteDao = new ClienteDao();
+    ?>
     <div class="container">
-
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <h1>Cadastro</h1>
-                <div class="erro">
-                    <ul id="disney" class="text-danger"> </ul>
-                </div>
-                <form action="./app/controller/ClienteController.php" method="post">
-                    <input hidden="true" name="method" value="post" />
-                    <div class="mb-3 row">
-                        <label for="nome" class="col-sm-2 col-form-label">Nome*</label>
-                        <div class="col-sm-8">
-                            <input name="nome" type="text" class="form-control" id="nome" required>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="endereco" class="col-sm-2 col-form-label">Endereco*</label>
-                        <div class="col-sm-8">
-                            <input name="endereco" type="text" class="form-control" id="endereco" required>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8 row">
-                            <div class="col-6 ">
-                                <label for="numero" class="col-sm-4 col-form-label">Numero*</label>
-                                <div class="col-sm-10">
-                                    <input name="numero" type="text" class="form-control" id="numero" required>
-                                </div>
-                            </div>
-                            <div class="col-6 ">
-                                <label for="tipo" class="col-sm-6 col-form-label">Tipo cliente*</label>
-                                <div class="col-sm-10">
-                                    <select id="tipo" name="tipo" class="form-select"
-                                        aria-label="Default select example" required>
-                                        <option disabled selected>seleciona</option>
-                                        <option value="1">Juridico</option>
-                                        <option value="2">Física</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8 row">
-                            <div class="col-4 ">
-                                <label for="numerodoc" class="col-sm-4 col-form-label">Numero documento*</label>
-                                <div class="col-sm-10">
-                                    <input name="numerodoc" type="text" class="form-control" id="numerodoc" required>
-                                </div>
-                            </div>
-                            <div class="col-4 ">
-
-                                <label for="cidade" class="col-sm-4 col-form-label">Cidade*</label>
-                                <br />
-                                <br />
-                                <div class="col-sm-10">
-                                    <input name="cidade" type="text" class="form-control" id="cidade" required>
-                                </div>
-                            </div>
-
-                            <div class="col-4 ">
-
-                                <label for="uf" class="col-sm-4 col-form-label">Uf*</label>
-                                <br />
-                                <br />
-                                <div class="col-sm-10">
-                                    <select class="form-select" name="uf" class="form-control" id="uf" required>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8 row">
-                            <div class="col-6 ">
-                                <label for="telefone" class="col-sm-4 col-form-label">Telefone</label>
-                                <div class="col-sm-10">
-                                    <input name="telefone" type="text" class="form-control" id="telefone">
-                                </div>
-                            </div>
-                            <div class="col-6 ">
-
-                                <label for="inscricao" class="col-sm-4 col-form-label">Inscricao</label>
-                                <div class="col-sm-10">
-                                    <input name="inscricao" type="text" class="form-control" id="inscricao">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="btn-form" class="al-right ">
-                            <button type="reset" class="btn btn-danger ">limpar</button>
-                            <button id="cad" type="submit" class="btn btn-success">cadastrar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <br />
+        <br />
+        <br />
+        <div class="d-flex justify-content-between">
+            <h1>Lista de clientes</h1>
+            <a id="right-btn" class="btn btn-success " href="http://localhost:8080/cadastrar.php">Cadastrar cliente</a>
         </div>
 
+        <br />
+        <br />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Tipo de cliente</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+            foreach ($clienteDao->findAll() as $cliente) {
+            ?>
+                <tr>
+                    <th scope="row">
+                        <?php echo $cliente->getCodigo(); ?>
+                    </th>
+                    <td>
+                        <?php echo $cliente->getNome(); ?>
+                    </td>
+                    <td>
+                        <?php echo $cliente->getNumero(); ?>
+                    </td>
+                    <td>
+                        <?php echo $cliente->getTipo() == 1 ? "Juridico" : "Físico"; ?>
+                    </td>
+                    <td>
+                        <?php echo $cliente->getTelefone(); ?>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary"
+                            href="<?php echo 'http://localhost:8080/alterar.php?id=' . $cliente->getCodigo(); ?>"><img
+                                src="assets/image/see.png" /></a>
+                        <button class="btn btn-danger" onclick="confirma(<?php echo $cliente->getCodigo(); ?>);"><img
+                                src="assets/image/lixo.png" /></button>
+                    </td>
+                </tr>
+
+                <?php
+            }
+            ?>
+            </tbody>
+        </table>
+
+        <br />
+
+        <br />
     </div>
 
     <script src="./assets/js/uf.js"></script>
@@ -138,6 +96,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
         integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
         crossorigin="anonymous"></script>
+    <script>
+        function confirma(id) {
+            var b = confirm('deseja excluir mesmo ?');
+            if (b) {
+                window.location.href = "./app/controller/ClienteController.php?method=delete&id=" + id;
+            }
+        }
+    </script>
 </body>
 
 </html>

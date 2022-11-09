@@ -9,3 +9,8 @@
 #btn-form button{
     width: 25%;
 }
+
+#right-btn{
+    margin-right: 10%;
+    padding: 20px;
+}
