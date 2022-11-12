@@ -44,7 +44,9 @@ include("header.php");
                 <?php
                 if(isset($_SESSION['ERRO_UP'])){
                     echo "<div class=\"alert alert-danger\" role=\"alert\">
-                    ".$_SESSION['ERRO_UP']->getMessage()."";
+                        Houve um erro, confira os campos digitados para o usuário. Há campos que podem 
+                        estar duplicados ou incorretos confira!!!
+                    </div>";
                     unset($_SESSION['ERRO_UP']);
                 }        
                 ?>
@@ -53,7 +55,7 @@ include("header.php");
                     <div class="mb-3 row">
                         <label for="nome" class="col-sm-2 col-form-label">Nome*</label>
                         <div class="col-sm-8">
-                            <input name="nome" type="text" class="form-control" id="nome"
+                            <input name="nome" placeholder="joãozinho, luizinho, claudinho..." type="text" class="form-control" id="nome"
                                 value="<?php echo $clienteAlt->getNome(); ?>" required>
                         </div>
                     </div>
@@ -61,7 +63,7 @@ include("header.php");
                     <div class="mb-3 row">
                         <label for="endereco" class="col-sm-2 col-form-label">Endereco*</label>
                         <div class="col-sm-8">
-                            <input name="endereco" type="text" class="form-control" id="endereco"
+                            <input name="endereco" placeholder="Avenida Lins de Vasconcelos, 234." type="text" class="form-control" id="endereco"
                                 value="<?php echo $clienteAlt->getEndereco(); ?>" required>
                         </div>
                     </div>
@@ -72,7 +74,7 @@ include("header.php");
                             <div class="col-6 ">
                                 <label for="numero" class="col-sm-4 col-form-label">Numero*</label>
                                 <div class="col-sm-10">
-                                    <input name="numero" type="text" class="form-control" id="numero"
+                                    <input name="numero" placeholder="456" type="text" class="form-control" id="numero"
                                         value="<?php echo $clienteAlt->getNumero(); ?>" required>
                                 </div>
                             </div>
@@ -81,9 +83,9 @@ include("header.php");
                                 <div class="col-sm-10">
                                     <select id="tipo" name="tipo" class="form-select"
                                         aria-label="Default select example" required>
-                                        <option disabled selected>seleciona</option>
-                                        <option value="1">Juridico</option>
-                                        <option value="2">Física</option>
+                                        <option disabled>seleciona</option>
+                                        <option value="1" <?php  echo $clienteAlt->getTipo()=="1"?"selected":"";?>>Juridico</option>
+                                        <option value="2" <?php  echo $clienteAlt->getTipo()=="2"?"selected":"";?>>Físico</option>
                                     </select>
                                 </div>
                             </div>
@@ -96,7 +98,7 @@ include("header.php");
                             <div class="col-4 ">
                                 <label for="numerodoc" class="col-sm-4 col-form-label">Numero documento*</label>
                                 <div class="col-sm-10">
-                                    <input name="numerodoc" type="text" class="form-control" id="numerodoc"
+                                    <input name="numerodoc" placeholder="4546575" type="text" class="form-control" id="numerodoc"
                                         value="<?php echo $clienteAlt->getNumeroDocumento(); ?>" required>
                                 </div>
                             </div>
@@ -106,7 +108,7 @@ include("header.php");
                                 <br />
                                 <br />
                                 <div class="col-sm-10">
-                                    <input name="cidade" type="text" class="form-control" id="cidade"
+                                    <input name="cidade" placeholder="São Paulo, Paris, Nova Iorque, Rio de Janeiro, entre outras." type="text" class="form-control" id="cidade"
                                         value="<?php echo $clienteAlt->getCidade(); ?>" required>
                                 </div>
                             </div>
@@ -115,10 +117,11 @@ include("header.php");
 
                                 <label for="uf" class="col-sm-4 col-form-label">Uf*</label>
                                 <br />
-                                <br />
+                                <br />    
                                 <div class="col-sm-10">
+                                    <input id="uf-value" hidden="true" value="<?php echo $clienteAlt->getUf(); ?>" />
                                     <select class="form-select" name="uf" class="form-control uf" id="uf"
-                                        value="<?php echo $clienteAlt->getUf(); ?>" required>
+                                        required>
                                     </select>
                                 </div>
                             </div>
@@ -131,8 +134,8 @@ include("header.php");
                             <div class="col-6 ">
                                 <label for="telefone" class="col-sm-4 col-form-label">Telefone</label>
                                 <div class="col-sm-10">
-                                    <input name="telefone" type="text" class="form-control" id="telefone"
-                                        value="<?php echo $clienteAlt->getTelefone(); ?>">
+                                    <input name="telefone"  placeholder="(54)89564-8975" type="text" class="form-control" id="telefone"
+                                        value="<?php echo $clienteAlt->getTelefone(); ?>" maxlength="14" data-js="phone">
                                 </div>
                             </div>
                             <div class="col-6 ">

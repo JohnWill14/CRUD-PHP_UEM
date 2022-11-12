@@ -35,8 +35,8 @@ class UsuarioDao{
     public function login($login, $password){
         $usuario = NULL;
         try{
-            $usuario = $this->getUser($login, $password);
-
+            $usuario = $this->getUser($login , sha1($password));
+            echo sha1($password);
             if($usuario != NULL)
                 $_SESSION['user'] = $usuario;
             
@@ -49,3 +49,4 @@ class UsuarioDao{
 }
 
 ?>
+

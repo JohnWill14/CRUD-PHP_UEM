@@ -18,7 +18,9 @@ include("header.php");
                 <?php
                 if(isset($_SESSION['ERRO_CR'])){
                     echo "<div class=\"alert alert-danger\" role=\"alert\">
-                    ".$_SESSION['ERRO_CR']->getMessage()."</div>";
+                        Houve um erro, confira os campos digitados para o usuário. Há campos que podem 
+                        estar duplicados ou incorretos confira!!!
+                    </div>";
                     unset($_SESSION['ERRO_CR']);
                 }        
                 ?>
@@ -27,14 +29,14 @@ include("header.php");
                     <div class="mb-3 row">
                         <label for="nome" class="col-sm-2 col-form-label">Nome*</label>
                         <div class="col-sm-8">
-                            <input name="nome" type="text" class="form-control" id="nome" required>
+                            <input name="nome" placeholder="joãozinho, luizinho, claudinho..." type="text" class="form-control" id="nome" required>
                         </div>
                     </div>
 
                     <div class="mb-3 row">
                         <label for="endereco" class="col-sm-2 col-form-label">Endereco*</label>
                         <div class="col-sm-8">
-                            <input name="endereco" type="text" class="form-control" id="endereco" required>
+                            <input name="endereco" placeholder="Avenida Lins de Vasconcelos, 234." type="text" class="form-control" id="endereco" required>
                         </div>
                     </div>
 
@@ -44,7 +46,7 @@ include("header.php");
                             <div class="col-6 ">
                                 <label for="numero" class="col-sm-4 col-form-label">Numero*</label>
                                 <div class="col-sm-10">
-                                    <input name="numero" type="text" class="form-control" id="numero" required>
+                                    <input name="numero" placeholder="456" type="text" class="form-control" id="numero" required>
                                 </div>
                             </div>
                             <div class="col-6 ">
@@ -54,7 +56,7 @@ include("header.php");
                                         aria-label="Default select example" required>
                                         <option disabled selected>seleciona</option>
                                         <option value="1">Juridico</option>
-                                        <option value="2">Física</option>
+                                        <option value="2">Físico</option>
                                     </select>
                                 </div>
                             </div>
@@ -67,7 +69,7 @@ include("header.php");
                             <div class="col-4 ">
                                 <label for="numerodoc" class="col-sm-4 col-form-label">Numero documento*</label>
                                 <div class="col-sm-10">
-                                    <input name="numerodoc" type="text" class="form-control" id="numerodoc" required>
+                                    <input name="numerodoc" placeholder="4546575" type="text" class="form-control" id="numerodoc" required>
                                 </div>
                             </div>
                             <div class="col-4 ">
@@ -76,7 +78,7 @@ include("header.php");
                                 <br />
                                 <br />
                                 <div class="col-sm-10">
-                                    <input name="cidade" type="text" class="form-control" id="cidade" required>
+                                    <input name="cidade" placeholder="São Paulo, Paris, Nova Iorque, Rio de Janeiro, entre outras." type="text" class="form-control" id="cidade" required>
                                 </div>
                             </div>
 
@@ -99,14 +101,14 @@ include("header.php");
                             <div class="col-6 ">
                                 <label for="telefone" class="col-sm-4 col-form-label">Telefone</label>
                                 <div class="col-sm-10">
-                                    <input name="telefone" type="text" class="form-control" id="telefone">
+                                    <input name="telefone"   type="text" class="form-control" id="telefone" maxlength="14" data-js="phone">
                                 </div>
                             </div>
                             <div class="col-6 ">
 
                                 <label for="inscricao" class="col-sm-4 col-form-label">Inscricao</label>
                                 <div class="col-sm-10">
-                                    <input name="inscricao" type="text" class="form-control" id="inscricao">
+                                    <input name="inscricao" placeholder="788546" type="text" class="form-control" id="inscricao">
                                 </div>
                             </div>
                         </div>

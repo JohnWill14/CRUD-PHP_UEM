@@ -8,7 +8,9 @@ include_once("app/util/session.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SGC</title>
+
+    <link rel="icon" type="imagem/png" href="assets/image/icon.png" />
     <link rel="stylesheet" href="./assets/css/estilo.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
