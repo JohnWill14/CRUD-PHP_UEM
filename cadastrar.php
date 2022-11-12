@@ -99,9 +99,9 @@ include("header.php");
                         <div class="col-sm-2"></div>
                         <div class="col-sm-8 row">
                             <div class="col-6 ">
-                                <label for="telefone" class="col-sm-4 col-form-label">Telefone</label>
+                                <label for="telefone"  class="col-sm-4 col-form-label">Telefone</label>
                                 <div class="col-sm-10">
-                                    <input name="telefone"   type="text" class="form-control" id="telefone" maxlength="14" data-js="phone">
+                                    <input name="telefone" placeholder="(54)89564-8975"   type="text" class="form-control" id="telefone" maxlength="14" data-js="phone">
                                 </div>
                             </div>
                             <div class="col-6 ">
