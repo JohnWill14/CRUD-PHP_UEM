@@ -30,6 +30,8 @@ if(isset($_GET['method'])&&$_GET['method']=='login'){
    
     if(!isset($_SESSION['user'])){
         $_SESSION['ERRO'] = "login/password invalid";
+        header("Location: ../../");
+        return;
     }
 
     header("Location: ../../lista.php");

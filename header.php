@@ -2,8 +2,8 @@
     include_once("app/model/Cliente.php");
     include_once("app/dao/ClienteDao.php");
     include_once("app/conection/Conection.php");
-    include_once("app/util/session.php");
-    validSession();
+    include_once("app/util/session.php"); 
+    validSessionMessage("Faça login no sistema para continuar");
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">SGC =></a>
+  <a class="navbar-brand" href="#">&nbsp;&nbsp;&nbsp;SGC =></a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">

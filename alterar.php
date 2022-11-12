@@ -1,6 +1,5 @@
 <?php
 include_once("app/util/session.php");
-validSession();
 include("header.php");
 ?>
 

@@ -2,8 +2,7 @@
 include_once("../util/session.php");
 include_once("../model/Cliente.php");
 include_once("../dao/ClienteDao.php");
-
-validSession();
+validSessionMessage("Faça login no sistema para continuar");
 
 $clienteDao = new ClienteDao();
 

@@ -9,6 +9,15 @@ function validSession(){
     }
 }
 
+function validSessionMessage($message){
+    if(!isset($_SESSION['user'])){
+        $_SESSION['ERRO'] = $message;
+        header("Location: ../../");
+    }else{
+        unset($_SESSION['ERRO']);
+    }
+}
+
 
 function telaLogin(){
         header("Location: ../../");
