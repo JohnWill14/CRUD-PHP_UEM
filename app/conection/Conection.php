@@ -5,7 +5,7 @@
 
         
         private function __construct() {
-            //
+            
         }
 
         public static function getConection(){
