@@ -1,5 +1,6 @@
+var error = [];
 $("#cad").click(function(){
-    let error = []
+    error = [];
      if($("#nome").val()==""){
          error.push("Campo nome nao pode ser vazio")
      }
@@ -52,3 +53,8 @@ $("#cad").click(function(){
      }
          
  });
+
+ function validarForm(){
+    var resp = error.length == 0;
+    return resp;
+ }

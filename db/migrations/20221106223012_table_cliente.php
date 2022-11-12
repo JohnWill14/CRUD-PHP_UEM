@@ -22,7 +22,7 @@ final class TableCliente extends AbstractMigration
         $users->addColumn('cd_cliente', 'integer', ['limit' => 3, 'null'=>false, 'identity' => true])
               ->addColumn('nm_nome', 'string', ['limit' => 50, 'null'=>false])
               ->addColumn('ds_endereco', 'string', ['limit' => 100, 'null'=>false])
-              ->addColumn('nr_numero', 'string', ['limit' => 14, 'null'=>false])
+              ->addColumn('nr_numero', 'string', ['limit' => 14, 'null'=>false, 'unique' => true])
               ->addColumn('tp_cliente', 'string', ['limit' => 1, 'null'=>false])
               ->addColumn('nr_documento', 'string', ['limit' => 14, 'null'=>false])
               ->addColumn('ds_cidade', 'string', ['limit' => 50, 'null'=>false])

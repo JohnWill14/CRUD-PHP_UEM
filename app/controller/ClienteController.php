@@ -1,7 +1,9 @@
 <?php
+include_once("../util/session.php");
 include_once("../model/Cliente.php");
 include_once("../dao/ClienteDao.php");
 
+validSession();
 
 $clienteDao = new ClienteDao();
 
@@ -23,17 +25,42 @@ function getCliente($valores_post){
 
 if(isset($_GET['method'])&&$_GET['method']=='post'){
     $cliente = getCliente($valores_post);
-    $clienteDao->create($cliente);
-    header("Location: ../../");
+    try{
+        $clienteDao->create($cliente);
+    }catch(Exception $e){
+        $_SESSION['ERRO_CR'] = $e;
+    }
+
+    if(!isset($_SESSION['ERRO_CR'])){
+        header("Location: ../../lista.php");
+    }else{
+        header("Location: ../../cadastrar.php");
+    }
+
 }else if(isset($_GET['method'])&&$_GET['method']=='update'){
     $cliente = getCliente($valores_post);
     $cliente->setCodigo($valores_post['codigo']);
-    $clienteDao->update($cliente);
-    header("Location: ../../");
+    try{
+        $clienteDao->update($cliente);
+    }catch(Exception $e){
+        $_SESSION['ERRO_UP'] = $e;
+       
+    }
+    if(!isset($_SESSION['ERRO_UP'])){
+        header("Location: ../../lista.php");
+    }else{
+        header("Location: ../../alterar.php?id=".$cliente->getCodigo());
+    }
+
 } else if(isset($_GET['method'])&&$_GET['method']=='delete'&&isset($_GET['id'])){
     $id = $_GET['id'];
-    $clienteDao->delete($id);
-    header("Location: ../../");
+    
+    try{
+        $clienteDao->delete($id);
+    }catch(Exception $e){
+        $_SESSION['ERRO_DE'] = $e;
+    }
+    header("Location: ../../lista.php");
 }
 
 ?>

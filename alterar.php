@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once("app/util/session.php");
+validSession();
+include("header.php");
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/estilo.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-</head>
 <body>
 
 
@@ -47,11 +37,18 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h1>Alterar</h1>
+                <h1>Alterar Cliente</h1>
                 <div class="erro">
                     <ul id="disney" class="text-danger"> </ul>
                 </div>
-                <form action="./app/controller/ClienteController.php?method=update" method="post">
+                <?php
+                if(isset($_SESSION['ERRO_UP'])){
+                    echo "<div class=\"alert alert-danger\" role=\"alert\">
+                    ".$_SESSION['ERRO_UP']->getMessage()."";
+                    unset($_SESSION['ERRO_UP']);
+                }        
+                ?>
+                <form action="./app/controller/ClienteController.php?method=update" onsubmit="return validarForm();" method="post">
                     <input hidden="true" name="codigo" value="<?php echo $clienteAlt->getCodigo(); ?>" />
                     <div class="mb-3 row">
                         <label for="nome" class="col-sm-2 col-form-label">Nome*</label>

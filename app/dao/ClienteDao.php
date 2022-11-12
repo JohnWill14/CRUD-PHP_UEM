@@ -1,4 +1,5 @@
 <?php
+include_once("../util/session.php");
 include_once('../conection/Conection.php');
 class ClienteDao{
     public function create(Cliente $cliente){
@@ -21,7 +22,7 @@ class ClienteDao{
 
             return $prepared_sql->execute();
         }catch (Exception $e) {
-            echo "Deu ruim <br>" . $e . '<br>';
+            throw new Exception($e);
         }
     }
 
@@ -46,7 +47,7 @@ class ClienteDao{
 
             return $prepared_sql->execute();
         }catch (Exception $e) {
-            echo "Deu ruim <br>" . $e . '<br>';
+            throw new Exception($e);
         }
     }
 
@@ -60,7 +61,7 @@ class ClienteDao{
 
             return $prepared_sql->execute();
         }catch (Exception $e) {
-            echo "Deu ruim <br>" . $e . '<br>';
+            throw new Exception($e);
         }
     }
 
@@ -76,7 +77,7 @@ class ClienteDao{
 
             return $clientes;
         }catch(Exception $e){
-            echo "Deu ruim <br>" . $e . '<br>';
+            throw new Exception($e);
         }
     }
 
@@ -105,7 +106,7 @@ class ClienteDao{
 
             return $cliente;
         }catch(Exception $e){
-            echo "Deu ruim <br>" . $e . '<br>';
+            throw new Exception($e);
         }
     }
 

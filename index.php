@@ -1,3 +1,6 @@
+<?php
+include_once("app/util/session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,74 +19,35 @@
 </head>
 
 <body>
-    <?php
-    include_once("app/model/Cliente.php");
-    include_once("app/dao/ClienteDao.php");
-    include_once("app/conection/Conection.php");
-
-    $clienteDao = new ClienteDao();
+<?php
+    if(isset($_SESSION['ERRO'])){
+        echo "<div class=\"alert alert-danger\" role=\"alert\">
+        ".$_SESSION['ERRO']."</div>";
+        unset($_SESSION['ERRO']);
+    }        
     ?>
-    <div class="container">
-        <br />
-        <br />
-        <br />
-        <div class="d-flex justify-content-between">
-            <h1>Lista de clientes</h1>
-            <a id="right-btn" class="btn btn-success " href="http://localhost:8080/cadastrar.php">Cadastrar cliente</a>
-        </div>
+<main class="form-signin" style="margin: auto; width: 30%;">
+    
+  <form action="app/controller/UsuarioController.php?method=login" method="post" style="margin-top: 10%;">
+   <h1>Sistema gerenciador de clientes</h1>
 
-        <br />
-        <br />
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Número</th>
-                    <th scope="col">Tipo de cliente</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Operações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-            foreach ($clienteDao->findAll() as $cliente) {
-            ?>
-                <tr>
-                    <th scope="row">
-                        <?php echo $cliente->getCodigo(); ?>
-                    </th>
-                    <td>
-                        <?php echo $cliente->getNome(); ?>
-                    </td>
-                    <td>
-                        <?php echo $cliente->getNumero(); ?>
-                    </td>
-                    <td>
-                        <?php echo $cliente->getTipo() == 1 ? "Juridico" : "Físico"; ?>
-                    </td>
-                    <td>
-                        <?php echo $cliente->getTelefone(); ?>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary"
-                            href="<?php echo 'http://localhost:8080/alterar.php?id=' . $cliente->getCodigo(); ?>"><img
-                                src="assets/image/see.png" /></a>
-                        <button class="btn btn-danger" onclick="confirma(<?php echo $cliente->getCodigo(); ?>);"><img
-                                src="assets/image/lixo.png" /></button>
-                    </td>
-                </tr>
-
-                <?php
-            }
-            ?>
-            </tbody>
-        </table>
-
-        <br />
-
-        <br />
+    <div class="form-floating">
+      <input type="Login" name="login" class="form-control" id="floatingInput" placeholder="yuripa07">
+      <label for="floatingInput">Login</label>
     </div>
+    <br/>
+    <br/>
+    <div class="form-floating">
+      <input type="password" login="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <br/>
+    <br/>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+
+  </form>
+</main>
+
 
     <script src="./assets/js/uf.js"></script>
     <script src="./assets/js/valida.js"></script>
