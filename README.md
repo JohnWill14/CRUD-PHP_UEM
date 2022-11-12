@@ -6,7 +6,7 @@ back end de um sistema web utilizando PHP e Banco de Dados MYSQL.
 # Passo a passo para executar
 
 ## Banco
- dentro da pasta web há um arquivo chamado dump.sql. Existe a necessidade de executar esse script sql em
+ Dentro da pasta há um arquivo chamado dump.sql. Existe a necessidade de executar esse script sql em
 um banco de dados, é necesario que haja um schema chamado "web" e que esse schema estaja em uso ao executar esse script. Isso fara com que a base de dados seja a mesma que os que fizeram esse trabalho projetaram.
 
 ## Porta Banco
