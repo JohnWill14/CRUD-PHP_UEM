@@ -28,8 +28,8 @@ include("header.php");
             unset($_SESSION['ERRO_DE']);
         }
         ?>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-striped">
+        <div class="">
+            <table id="table" class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -99,6 +99,13 @@ include("header.php");
                 window.location.href = "./app/controller/ClienteController.php?method=delete&id=" + id;
             }
         }
+    </script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
     </script>
 </body>
 
