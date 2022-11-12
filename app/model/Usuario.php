@@ -88,7 +88,7 @@ class Usuario{
 	}
 
     /**
-	 * @return mixedlogin
+	 * @return 
 	 */
 	function getLogin() {
 		return $this->password;
